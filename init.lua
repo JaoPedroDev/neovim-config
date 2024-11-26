@@ -1,20 +1,23 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 -- vim.g.have_nerd_font = false
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.g.termguicolors = true
 
+vim.diagnostic.config({ virtual_text = false })
+
 require("config.lazy")
 require("config.keymaps")
 require("config.autocommands")
+if vim.g.neovide then
+    require("config.neovide")
+end
 
 -- Editor Configs
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
 vim.opt.wrap = false
 vim.opt.number = true
 vim.opt.numberwidth = 3
@@ -23,7 +26,7 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 10
 vim.opt.showmode = false
 
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Save undo history
 vim.opt.undofile = true
@@ -34,7 +37,7 @@ vim.opt.smartcase = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -42,3 +45,9 @@ vim.opt.updatetime = 250
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
 vim.opt.timeoutlen = 300
+
+-- Indentention
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
