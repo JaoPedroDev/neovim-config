@@ -34,19 +34,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         map("gI", tb.lsp_implementations, "[G]oto [I]mplementation")
 
-        map("<leader>D", tb.lsp_type_definitions, "Type [D]efinition")
+        map("<leader>lD", tb.lsp_type_definitions, "Type [D]efinition")
 
-        map("<leader>ds", tb.lsp_document_symbols, "[D]ocument [S]ymbols")
+        map("<leader>ls", tb.lsp_document_symbols, "[D]ocument [S]ymbols")
 
-        map("<leader>ws", tb.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+        map("<leader>lS", tb.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
-        map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+        map("<leader>lr", vim.lsp.buf.rename, "[R]ename")
 
-        map("<leader>da", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+        map("<leader>la", vim.lsp.buf.code_action, "Code [A]ction", { "n", "x" })
 
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-        -- vim.keymap.set("n", "K", cmp.mapping.open_docs())
+        vim.keymap.set("n", "K", cmp.mapping.open_docs())
+
+        wk.add({
+            { "<leader>l", group = "LSP" },
+        })
     end,
 })
 
@@ -55,4 +59,9 @@ wk.add({
     mode = { "n" },
     { "<leader>e", "<cmd>NvimTreeFocus<CR>", desc = "File explorer" },
     { "<leader>c", "<cmd>BufferClose<CR>", desc = "Close current buffer" },
+})
+
+wk.add({
+    mode = { "n" },
+    { "<leader>s", group = "Search" },
 })

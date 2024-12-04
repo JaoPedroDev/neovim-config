@@ -8,9 +8,14 @@ vim.g.termguicolors = true
 
 vim.diagnostic.config({ virtual_text = false })
 
+vim.g.markdown_fenced_languages = {
+    "ts=typescript",
+}
+
 require("config.lazy")
 require("config.keymaps")
 require("config.autocommands")
+require("config.lspconfig")
 if vim.g.neovide then
     require("config.neovide")
 end
@@ -51,3 +56,17 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+
+function ReloadConfig()
+    for name, _ in pairs(package.loaded) do
+        if name:match("^user") then
+            package.loaded[name] = nil
+        end
+    end
+    dofile(vim.fn.stdpath("config") .. "/init.lua")
+    print("Configuration reloaded!")
+end
+
+vim.api.nvim_create_user_command("ReloadConfig", function()
+    ReloadConfig()
+end, {})
