@@ -40,3 +40,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
     end,
 })
+
+-- Update title dynamically based on file or working directory
+vim.api.nvim_create_autocmd({ "BufEnter", "VimEnter" }, {
+    callback = function()
+        if vim.fn.expand("%:t") == "" then
+            vim.o.titlestring = "nvim - " .. vim.fn.getcwd()
+        else
+            vim.o.titlestring = "nvim - " .. vim.fn.expand("%:t")
+        end
+    end,
+})
