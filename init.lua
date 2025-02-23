@@ -31,6 +31,9 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 10
 vim.opt.showmode = false
 
+vim.o.title = true
+vim.o.titlestring = "nvim - %t"
+
 vim.opt.signcolumn = "yes"
 
 -- Save undo history

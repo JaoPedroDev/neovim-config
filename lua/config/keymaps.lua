@@ -65,3 +65,16 @@ wk.add({
     mode = { "n" },
     { "<leader>s", group = "Search" },
 })
+
+-- Minecraft Modding
+wk.add({
+    mode = { "n" },
+    { "<leader>m", group = "Minecraft" },
+    {
+        "<leader>ms",
+        function()
+            tb.find_files({ search_dirs = { "./minecraft_sources" } })
+        end,
+        desc = "Search Source",
+    },
+})
