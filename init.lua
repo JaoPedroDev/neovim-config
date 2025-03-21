@@ -73,3 +73,5 @@ end
 vim.api.nvim_create_user_command("ReloadConfig", function()
     ReloadConfig()
 end, {})
+
+vim.opt.fillchars = { eob = " " }

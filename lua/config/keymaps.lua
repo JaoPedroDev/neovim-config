@@ -20,6 +20,13 @@ vim.keymap.set("n", "<C-Left>", "<cmd>BufferPrevious<CR>")
 -- Clear highlights on search
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- Codeium
+vim.keymap.set('i', '<C-s>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+vim.keymap.set('i', '<C-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+vim.keymap.set('i', '<C-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+vim.keymap.set('i', '<C-b>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+vim.keymap.set('i', '<C-Right>', function() return vim.fn['codeium#AcceptNextWord']() end, { expr = true, silent = true })
+
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("start-lsp-attach", { clear = true }),
     callback = function(event)
@@ -58,7 +65,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 wk.add({
     mode = { "n" },
     { "<leader>e", "<cmd>NvimTreeFocus<CR>", desc = "File explorer" },
-    { "<leader>c", "<cmd>BufferClose<CR>", desc = "Close current buffer" },
+    { "<leader>c", "<cmd>BufferClose<CR>",   desc = "Close current buffer" },
 })
 
 wk.add({
