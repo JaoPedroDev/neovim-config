@@ -5,6 +5,10 @@ return {
         opts = {},
     },
 
+    { 'L3MON4D3/LuaSnip' },
+    { 'rafamadriz/friendly-snippets' },
+    { 'saadparwaiz1/cmp_luasnip' },
+
     {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
@@ -29,6 +33,7 @@ return {
                         group_index = 0,
                     },
                     { name = "nvim_lsp" },
+                    { name = "luasnip" },
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-Space>"] = cmp.mapping.complete(),
@@ -49,6 +54,7 @@ return {
                 }),
                 snippet = {
                     expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
                         vim.snippet.expand(args.body)
                     end,
                 },
