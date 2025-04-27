@@ -16,9 +16,6 @@ require("config.lazy")
 require("config.keymaps")
 require("config.autocommands")
 require("config.lspconfig")
-if vim.g.neovide then
-    require("config.neovide")
-end
 
 -- Editor Configs
 vim.opt.cursorline = true
