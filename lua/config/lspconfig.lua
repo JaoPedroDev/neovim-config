@@ -45,3 +45,8 @@ nvim_lsp.ts_ls.setup({
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()
+
+nvim_lsp.gdscript.setup({
+    root_dir = nvim_lsp.util.root_pattern("*.gd"),
+    capabilities = capabilities,
+})

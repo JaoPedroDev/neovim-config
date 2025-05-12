@@ -37,6 +37,7 @@ return {
             --
             -- You can use 'stop_after_first' to run the first available formatter from the list
             javascript = { "prettierd", "prettier", stop_after_first = true },
+            gdscript = { "gdformat" }
         },
         formatters = {
             stylua = {
@@ -49,6 +50,15 @@ return {
                     "-",
                 },
             },
+            gdformat = {
+                args = {
+                    "--line-length",
+                    "80",
+                    "--use-spaces",
+                    "4",
+                    "-"
+                },
+            }
         },
     },
 }
