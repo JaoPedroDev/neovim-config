@@ -1,6 +1,5 @@
 local tb = require("telescope.builtin")
 local wk = require("which-key")
-local cmp = require("cmp")
 
 ---- Non-Leader mappings ----
 -- Move line up and down
@@ -19,13 +18,6 @@ vim.keymap.set("n", "<C-Left>", "<cmd>BufferPrevious<CR>")
 
 -- Clear highlights on search
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-
--- Codeium
-vim.keymap.set('i', '<C-s>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-vim.keymap.set('i', '<C-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
-vim.keymap.set('i', '<C-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
-vim.keymap.set('i', '<C-b>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
-vim.keymap.set('i', '<C-Right>', function() return vim.fn['codeium#AcceptNextWord']() end, { expr = true, silent = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("start-lsp-attach", { clear = true }),
@@ -53,8 +45,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-        vim.keymap.set("n", "K", cmp.mapping.open_docs())
-
         wk.add({
             { "<leader>l", group = "LSP" },
         })
@@ -65,7 +55,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 wk.add({
     mode = { "n" },
     { "<leader>e", "<cmd>NvimTreeFocus<CR>", desc = "File explorer" },
-    { "<leader>c", "<cmd>BufferClose<CR>",   desc = "Close current buffer" },
+    { "<leader>c", "<cmd>BufferClose<CR>", desc = "Close current buffer" },
 })
 
 wk.add({
@@ -73,15 +63,20 @@ wk.add({
     { "<leader>s", group = "Search" },
 })
 
--- Minecraft Modding
-wk.add({
-    mode = { "n" },
-    { "<leader>m", group = "Minecraft" },
-    {
-        "<leader>ms",
-        function()
-            tb.find_files({ search_dirs = { "./minecraft_sources" } })
-        end,
-        desc = "Search Source",
-    },
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "java",
+    callback = function()
+        -- Minecraft Modding
+        wk.add({
+            mode = { "n" },
+            { "<leader>m", group = "Minecraft" },
+            {
+                "<leader>ms",
+                function()
+                    tb.find_files({ search_dirs = { "./minecraft_sources" } })
+                end,
+                desc = "Search Source",
+            },
+        })
+    end,
 })

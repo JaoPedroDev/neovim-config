@@ -14,8 +14,8 @@ vim.g.markdown_fenced_languages = {
 
 require("config.lazy")
 require("config.keymaps")
-require("config.autocommands")
 require("config.lspconfig")
+-- require("config.autocommands")
 
 -- Editor Configs
 vim.opt.cursorline = true
@@ -56,19 +56,5 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-
-function ReloadConfig()
-    for name, _ in pairs(package.loaded) do
-        if name:match("^user") then
-            package.loaded[name] = nil
-        end
-    end
-    dofile(vim.fn.stdpath("config") .. "/init.lua")
-    print("Configuration reloaded!")
-end
-
-vim.api.nvim_create_user_command("ReloadConfig", function()
-    ReloadConfig()
-end, {})
 
 vim.opt.fillchars = { eob = " " }
