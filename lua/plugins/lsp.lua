@@ -29,6 +29,8 @@ return {
                             window = {
                                 winblend = 0,
                                 border = "rounded",
+                                align = "bottom",
+                                relative = "win",
                             },
                         },
                     })
@@ -239,6 +241,7 @@ return {
                 --
                 -- You can use 'stop_after_first' to run the first available formatter from the list
                 -- javascript = { "prettierd", "prettier", stop_after_first = true },
+                gdscript = { "gdformat" },
             },
             formatters = {
                 stylua = {
@@ -254,7 +257,7 @@ return {
                 gdformat = {
                     args = {
                         "--line-length",
-                        "80",
+                        "100",
                         "--use-spaces",
                         "4",
                         "-",

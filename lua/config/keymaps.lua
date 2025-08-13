@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 wk.add({
     mode = { "n" },
     { "<leader>e", "<cmd>NvimTreeFocus<CR>", desc = "File explorer" },
-    { "<leader>c", "<cmd>BufferClose<CR>", desc = "Close current buffer" },
+    { "<leader>q", "<cmd>BufferClose<CR>", desc = "Close current buffer" },
 })
 
 wk.add({

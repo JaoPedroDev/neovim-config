@@ -33,6 +33,9 @@ vim.o.titlestring = "nvim - %t"
 
 vim.opt.signcolumn = "yes"
 
+-- Float windows border
+vim.opt.winborder = "rounded"
+
 -- Save undo history
 vim.opt.undofile = true
 

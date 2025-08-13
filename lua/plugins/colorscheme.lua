@@ -5,6 +5,10 @@ return {
         require("catppuccin").setup({
             flavor = "frappe",
             transparent_background = true,
+            float = {
+                transparent = true,
+                solid = false,
+            },
             custom_highlights = function(colors)
                 return {
                     CursorLineNr = { fg = colors.pink },
