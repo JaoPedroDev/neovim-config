@@ -5,7 +5,6 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.g.termguicolors = true
-
 vim.diagnostic.config({ virtual_text = false })
 
 vim.g.markdown_fenced_languages = {
@@ -14,8 +13,8 @@ vim.g.markdown_fenced_languages = {
 
 require("config.lazy")
 require("config.keymaps")
-require("config.lspconfig")
--- require("config.autocommands")
+require("config.lsp")
+require("config.commands")
 
 -- Editor Configs
 vim.opt.cursorline = true

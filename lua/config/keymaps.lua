@@ -13,8 +13,8 @@ vim.keymap.set("v", "<M-Down>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<M-Up>", ":m '<-2<CR>gv=gv")
 
 -- Next tab
-vim.keymap.set("n", "<C-Right>", "<cmd>BufferNext<CR>")
-vim.keymap.set("n", "<C-Left>", "<cmd>BufferPrevious<CR>")
+vim.keymap.set("n", "<C-k>", "<cmd>BufferNext<CR>")
+vim.keymap.set("n", "<C-j>", "<cmd>BufferPrevious<CR>")
 
 -- Clear highlights on search
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")

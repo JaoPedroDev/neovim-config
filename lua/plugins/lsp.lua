@@ -107,14 +107,19 @@ return {
                     -- code, if the language server you are using supports them
                     --
                     -- This may be unwanted, since they displace some of your code
-                    if
-                        client
-                        and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
-                    then
-                        map("<leader>lh", function()
-                            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-                        end, "[T]oggle Inlay [H]ints")
-                    end
+                    -- if
+                    --     client
+                    --     and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
+                    -- then
+                    --     map("<leader>lh", function()
+                    --         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+                    --     end, "[T]oggle Inlay [H]ints")
+                    -- end
+
+                    vim.lsp.inlay_hint.enable()
+                    map("<leader>lh", function()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+                    end, "[T]oggle Inlay [H]ints")
                 end,
             })
 
@@ -241,9 +246,25 @@ return {
                 --
                 -- You can use 'stop_after_first' to run the first available formatter from the list
                 -- javascript = { "prettierd", "prettier", stop_after_first = true },
-                gdscript = { "gdformat" },
+                gdscript = { "gdscriptformatter", stop_after_first = true },
+                xml = { "xmlformat", stop_after_first = true },
             },
             formatters = {
+                -- gdformat = {
+                --     args = {
+                --         "--use-spaces",
+                --         "4",
+                --         "-",
+                --     },
+                -- },
+                gdscriptformatter = {
+                    command = "gdscript-formatter",
+                    args = {
+                        "--safe",
+                        "--use-spaces",
+                    },
+                    stdin = true,
+                },
                 stylua = {
                     args = {
                         "--search-parent-directories",
@@ -254,14 +275,14 @@ return {
                         "-",
                     },
                 },
-                gdformat = {
+                xmlformat = {
+                    command = "xmlformat",
                     args = {
-                        "--line-length",
-                        "100",
-                        "--use-spaces",
+                        "--indent",
                         "4",
                         "-",
                     },
+                    stdin = true,
                 },
             },
         },

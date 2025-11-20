@@ -32,5 +32,7 @@ return { -- Collection of various small independent plugins/modules
         end
 
         require("mini.pairs").setup()
+
+        require("mini.cursorword").setup()
     end,
 }

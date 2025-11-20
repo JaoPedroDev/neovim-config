@@ -11,7 +11,7 @@ return {
                 map_keys = true,
                 key_bindings = {
                     accept = "<C-s>",
-                    accept_word = "<C-Right>",
+                    accept_word = "<C-w>",
                 },
             },
         })
