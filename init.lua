@@ -60,3 +60,33 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.fillchars = { eob = " " }
+
+if vim.g.neovide then
+    vim.opt.guifont = "FiraCode Nerd Font:h12"
+    vim.opt.guifontwide = "FiraCode Nerd Font:h12"
+
+    vim.g.neovide_normal_opacity = 0.9
+
+    vim.g.neovide_padding_top = 5
+    vim.g.neovide_padding_bottom = 5
+    vim.g.neovide_padding_right = 5
+    vim.g.neovide_padding_left = 5
+
+    vim.g.neovide_theme = "bg_color"
+
+    require("catppuccin").setup({
+        transparent_background = false,
+        float = {
+            transparent = true,
+            solid = false,
+        },
+        color_overrides = {
+            all = {
+                base = "#303446",
+                mantle = "#303446",
+                crust = "#303446",
+            },
+        },
+    })
+    vim.cmd.colorscheme("catppuccin")
+end
